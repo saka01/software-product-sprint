@@ -1,4 +1,29 @@
-#content {
+body{
+    background-color: black;
+}
+.name{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    text-align: center;
+    width: 450px;
+    color: white;
+    /* border-spacing: 1em .5em; */
+    padding: 30px;
+    border: 5px solid white; 
+    transform: translate(-50%, -50%);
+
+}
+.soon{
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    top: 62.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
@@ -6,4 +31,4 @@
 
 #greeting-container {
   margin-top: 20px;
-}
+} */
