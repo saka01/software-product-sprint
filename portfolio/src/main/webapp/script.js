@@ -5,7 +5,7 @@
     */
     (function ($) {
     "use strict"; // Start of use strict
-
+        const SCROLL_ANIMATION_DELAY_MS = 1000;
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (
@@ -22,14 +22,13 @@
                     {
                         scrollTop: target.offset().top - 70,
                     },
-                    1000,
+                    SCROLL_ANIMATION_DELAY_MS,
                     "easeInOutExpo"
                 );
                 return false;
             }
         }
     });
-
 
     // Closes responsive menu when a scroll trigger link is clicked
     $(".js-scroll-trigger").click(function () {
@@ -43,7 +42,7 @@
     });
 
     // Collapse Navbar
-    var navbarCollapse = function () {
+    const collapseNavbar  = function () {
         if ($("#mainNav").offset().top > 100) {
             $("#mainNav").addClass("navbar-shrink");
         } else {
@@ -51,20 +50,22 @@
         }
     };
     // Collapse now if page is not at top
-    navbarCollapse();
+    collapseNavbar ();
     // Collapse the navbar when page is scrolled
-    $(window).scroll(navbarCollapse);
+    $(window).scroll(collapseNavbar );
 })(jQuery); // End of use strict
-var greetTime = setInterval(addRandomGreeting, 600);
+
+const GREETTIME_INTERVAL = 600;
+const greetTime = setInterval(addRandomGreeting, GREETTIME_INTERVAL);
 
 function addRandomGreeting() {
-    const greetings =
+  const greetings =
         ['Hello!', '¡Hola!', 'Bonjour', '你好', 'こんにちは', 'Здравствуйте', 'ٱلسَّلَامُ عَلَيْكُمْ'];
 
     // Pick a random greeting.
-    const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
     // Add it to the page.
-    const greetingContainer = document.getElementById('greeting-container');
-    greetingContainer.innerText = greeting;
+  const greetingContainer = document.getElementById('greeting-container');
+  greetingContainer.innerText = greeting;
 }

@@ -70,7 +70,9 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
-}
+
+} 
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
@@ -79,11 +81,7 @@ hr {
   height: 0;
   overflow: visible;
 }
-.socials {
-  display: block;
-  padding: 0px;
-  left: 150px;
-}
+
 .arrow {
   display: block;
   position: absolute;
@@ -92,17 +90,35 @@ hr {
 }
 .s-git{
   position: absolute;
-  top: 400px;
+  top: 330px;
+  padding-left: 150px;
+
 }
 .s-ig{
   position: absolute;
-  top: 300px;
+  top: 250px;
+  padding-left: 150px;
+
 }
 .s-linkdln{
   position: absolute;
-  top: 200px;
-}
+  top: 450px;
+  padding-left: 150px;
 
+}
+.mypp{
+    display: block;
+    left: 100px;
+    width: 30%;
+    height: 30%;
+    float: left;
+}
+.letsee{
+  position:relative;
+  width:500px;
+  padding-bottom:2rem;
+  margin-left: auto;
+  }
 
 h1,
 h2,
@@ -2114,8 +2130,9 @@ body {
   background-attachment: scroll;
   background-size: cover;
 }
-.greetFont {
-  font-size: larger;
+.masthead h3 {
+  font-size: 2rem;
+  color: silver; 
 }
 .masthead h1 {
   font-family: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -2168,19 +2185,14 @@ body {
   }
 }
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(
-          to bottom,
-          #000 0,
-          rgba(0, 0, 0, 0.9) 75%,
-          rgba(0, 0, 0, 0.8) 100%
-  );
+  padding-top: 5rem;
+  background: black;
 }
 .about-section p {
-  margin-bottom: 5rem;
+  margin-bottom: 16rem;
 }
 .projects-section {
-  padding: 10rem 0;
+  padding: 2rem 0;
 }
 .projects-section .featured-text {
   padding: 2rem;
