@@ -31,6 +31,24 @@ async function getServerStats() {
   statsListElement.appendChild(
       createListElement('Used memory: ' + stats.usedMemory));
 }
+async function postblog() {
+  const responseFromServer = await fetch('/post-on-blog-servlet');
+  // The json() function returns an object that contains fields that we can
+  // reference to create HTML.
+  const stats = await responseFromServer.json();
+
+  const statsListElement = document.getElementById('server-stats-container');
+  statsListElement.innerHTML = '';
+statsListElement.appendChild(stats.name);
+  statsListElement.appendChild(
+      createListElement('Start time: ' + stats.name));
+  statsListElement.appendChild(
+      createListElement('Current time: ' + stats.email));
+  statsListElement.appendChild(
+      createListElement('Max memory: ' + stats.message));
+//   statsListElement.appendChild(
+//       createListElement('Used memory: ' + stats.usedMemory));
+}
 
 /** Creates an <li> element containing text. */
 function createListElement(text) {
@@ -38,3 +56,4 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+

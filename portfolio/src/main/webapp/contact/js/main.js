@@ -8,7 +8,7 @@
 
     $('.validate-form').on('submit',function(){
         var check = true;
-
+        alert("Success!!!");
         for(var i=0; i<input.length; i++) {
             if(validate(input[i]) == false){
                 showValidate(input[i]);
@@ -50,7 +50,4 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
-
 })(jQuery);

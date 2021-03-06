@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FormHandlerServlet extends HttpServlet {
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         // Get the value entered in the form.
         String name = request.getParameter("name");
@@ -23,16 +23,13 @@ public class FormHandlerServlet extends HttpServlet {
 
 
         // Print the value so you can see it in the server logs.
-        System.out.println("You submitted name: " + name);
-        System.out.println("You submitted email: " + email);
-        System.out.println("You submitted phone: " + phone);
-        System.out.println("You submitted message: " + message);
-
+        System.out.printf(
+        "Received name:%s \n email:%s\n phone:%s\n message:%s", name, email, phone, message);
 
         // Write the value to the response so the user can see it.
-        response.getWriter().println("You submitted name: " + name);
-        response.getWriter().println("You submitted email: " + email);
-        response.getWriter().println("You submitted phone: " + phone);
-        response.getWriter().println("You submitted message: " + message);
+        response.getWriter().println(
+            "You submitted name: " + name + "\nYou submitted email: " + email + "\nYou submitted phone: " + phone + "\nYou submitted message: " + message);
+
+        response.sendRedirect("/index.html");
     }
 }
