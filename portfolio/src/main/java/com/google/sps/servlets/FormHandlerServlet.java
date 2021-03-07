@@ -21,15 +21,9 @@ public class FormHandlerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String message = request.getParameter("message");
 
-
-        // Print the value so you can see it in the server logs.
-        System.out.printf(
-        "Received name:%s \n email:%s\n phone:%s\n message:%s", name, email, phone, message);
-
         String responseMsg =  String.format("\nYou submitted name:%s, \nemail:%s, \nphone:%s, \nmessage:%s", name, email, phone, message);
-        // Write the value to the response so the user can see it.
+        System.out.printf(responseMsg);
         response.getWriter().println(responseMsg);
-
         response.sendRedirect("/index.html");
     }
 }
