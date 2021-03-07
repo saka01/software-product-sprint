@@ -26,9 +26,9 @@ public class FormHandlerServlet extends HttpServlet {
         System.out.printf(
         "Received name:%s \n email:%s\n phone:%s\n message:%s", name, email, phone, message);
 
+        String responseMsg =  String.format("\nYou submitted name:%s, \nemail:%s, \nphone:%s, \nmessage:%s", name, email, phone, message);
         // Write the value to the response so the user can see it.
-        response.getWriter().println(
-            "You submitted name: " + name + "\nYou submitted email: " + email + "\nYou submitted phone: " + phone + "\nYou submitted message: " + message);
+        response.getWriter().println(responseMsg);
 
         response.sendRedirect("/index.html");
     }

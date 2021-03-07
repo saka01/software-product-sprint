@@ -46,8 +46,6 @@ statsListElement.appendChild(stats.name);
       createListElement('Current time: ' + stats.email));
   statsListElement.appendChild(
       createListElement('Max memory: ' + stats.message));
-//   statsListElement.appendChild(
-//       createListElement('Used memory: ' + stats.usedMemory));
 }
 
 /** Creates an <li> element containing text. */
