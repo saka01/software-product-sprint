@@ -1,17 +1,11 @@
 /** Fetches tasks from the server and adds them to the DOM. */
 function loadTasks() {
-  console.log("lololl");
   fetch('/list-contact').then(response => response.json()).then((contactsList) => {
     const taskListElement = document.getElementById('contact-list');
     contactsList.forEach((task) => {
     taskListElement.appendChild(createTaskElement(task));
-    console.log(task);
-
     })
-    console.log(contactsList);
-
   });
-
 }
 
 /** Creates an element that represents a task, including its delete button. */
@@ -24,10 +18,15 @@ function createTaskElement(task) {
   const phoneElement = document.createElement('span');
   const messageElement = document.createElement('span');
 
-  nameElement.innerText = task.name;
-  emailElement.innerText = task.email;
-  phoneElement.innerText = task.phone;
-  messageElement.innerText = task.message;
+  nameElement.className = 'label';
+  emailElement.className = 'label';
+  phoneElement.className = 'label';
+  messageElement.className = 'label';
+
+  nameElement.innerText = "Name: " + task.name;
+  emailElement.innerText = "Email: " + task.email;
+  phoneElement.innerText = "Phone: " + task.phone;
+  messageElement.innerText = "Message: " + task.message;
 
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
