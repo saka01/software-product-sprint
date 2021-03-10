@@ -34,7 +34,7 @@ function createTaskElement(task) {
   deleteButtonElement.addEventListener('click', () => {
   deleteTask(task);
 
-    //Remove the task from the DOM. 
+  // Remove the task from the DOM. 
   taskElement.remove();
   });
 
