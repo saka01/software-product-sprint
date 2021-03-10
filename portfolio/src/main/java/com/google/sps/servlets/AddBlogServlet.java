@@ -77,7 +77,7 @@ public class AddBlogServlet extends HttpServlet {
         String projectId = "msaka-sps-spring21";
         String bucketName = "msaka-sps-spring21.appspot.com";
         Storage storage =
-        StorageOptions.newBuilder().setProjectId(projectId).build().getService();
+            StorageOptions.newBuilder().setProjectId(projectId).build().getService();
     BlobId blobId = BlobId.of(bucketName, fileName);
     BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
 
