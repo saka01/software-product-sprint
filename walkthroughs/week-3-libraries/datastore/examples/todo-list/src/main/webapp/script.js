@@ -33,7 +33,7 @@ function createTaskElement(task) {
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
-    deleteTask(task);
+ deleteTask(task);
 
     // Remove the task from the DOM.
     taskElement.remove();
