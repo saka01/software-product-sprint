@@ -24,6 +24,7 @@ import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
@@ -43,7 +44,8 @@ public class SaveContactInfoServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-        com.google.cloud.datastore.KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
+    
     FullEntity taskEntity =
         Entity.newBuilder(keyFactory.newKey())
             .set("Name", name)

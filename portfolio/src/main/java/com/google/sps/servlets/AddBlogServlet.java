@@ -14,14 +14,9 @@
 
 package com.google.sps.servlets;
 
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.BlobInfo;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -30,40 +25,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-/**
- * Takes an image submitted by the user and uploads it to Cloud Storage, and then displays it as
- * HTML in the response.
- */
-@WebServlet("/upload")
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
+/** Servlet responsible for creating new tasks. */
+@WebServlet("/blog-add")
 @MultipartConfig
-public class FormHandlerServlet extends HttpServlet {
+public class AddBlogServlet extends HttpServlet {
 
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    // Sanitize user input to remove HTML tags and JavaScript.
+    String blogTitle = Jsoup.clean(request.getParameter("blog-title"), Whitelist.none());
+    String blogContent = Jsoup.clean(request.getParameter("blog-content"), Whitelist.none());
 
-    // Get the message entered by the user.
-    String message = request.getParameter("message");
+    long timestamp = System.currentTimeMillis();
+
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Blog");
 
     // Get the file chosen by the user.
-    Part filePart = request.getPart("image");
+    Part filePart = request.getPart("blog-image");
     String fileName = filePart.getSubmittedFileName();
     InputStream fileInputStream = filePart.getInputStream();
 
     // Upload the file and get its URL
     String uploadedFileUrl = uploadToCloudStorage(fileName, fileInputStream);
 
-    // Output some HTML that shows the data the user entered.
-    // You could also store the uploadedFileUrl in Datastore instead.
-    PrintWriter out = response.getWriter();
-    out.println("<p>Here's the image you uploaded:</p>");
-    out.println("<a href=\"" + uploadedFileUrl + "\">");
-    out.println("<img src=\"" + uploadedFileUrl + "\" />");
-    out.println("</a>");
-    out.println("<p>Here's the text you entered:</p>");
-    out.println(message);
-  }
+     FullEntity taskEntity =
+        Entity.newBuilder(keyFactory.newKey())
+            .set("blogTtile", blogTitle)
+            .set("blogContent", blogContent)
+            .set("Image", uploadedFileUrl)
+            .build();
+    datastore.put(taskEntity);
 
+  }
   /** Uploads a file to Cloud Storage and returns the uploaded file's URL. */
   private static String uploadToCloudStorage(String fileName, InputStream fileInputStream) {
     String projectId = "msaka-sps-spring21";

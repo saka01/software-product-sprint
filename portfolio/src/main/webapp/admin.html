@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Admin</title>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="style.css" rel="stylesheet" />
+        <script src="script.js"></script>
+    </head>
+    <body onload="loadTasks()">
+      <h1>HELLLLLLLLLLLLLLLLO</h1>
+        <p>view people who contact me <a href="contact/ViewContact.html">here</a></p>
+
+        <form action="/blog-add" method="POST" enctype="multipart/form-data">
+             <p>Type blog title:</p>
+            <textarea name="blog-title"></textarea>
+            <br/>
+            <p>Type blog content:</p>
+            <textarea name="blog-content"></textarea>
+            <br/>
+            <p>Upload blog image:</p>
+            <input type="file" name="blog-image">
+            <br/><br/>
+            <button>Submit</button>
+        </form>
+         <br>
+    <hr/>
+
+    <ul id="contact-list"></ul>
+    </body>
+</html>
+
