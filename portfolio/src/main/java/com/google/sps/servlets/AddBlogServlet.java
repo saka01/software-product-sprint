@@ -84,7 +84,7 @@ public class AddBlogServlet extends HttpServlet {
         // Upload the file to Cloud Storage.
         Blob blob = storage.create(blobInfo, fileInputStream);
 
-    // Return the uploaded file's URL.
-    return blob.getMediaLink();
+        // Return the uploaded file's URL.
+        return blob.getMediaLink();
   }
 }
