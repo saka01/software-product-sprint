@@ -45,12 +45,13 @@ public class ListContactServlet extends HttpServlet {
     while (results.hasNext()) {
       Entity entity = results.next();
 
+      long id = entity.getKey().getId();
       String name = entity.getString("Name");
       String email = entity.getString("Email");
       String phone = entity.getString("Phone");
       String message = entity.getString("Message");
 
-      Contact contacts = new Contact(name, email, phone, message);
+      Contact contacts = new Contact(id, name, email, phone, message);
       contactsList.add(contacts);
     }
     Gson gson = new Gson();
