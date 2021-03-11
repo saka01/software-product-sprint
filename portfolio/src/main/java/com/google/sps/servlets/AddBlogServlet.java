@@ -78,11 +78,11 @@ public class AddBlogServlet extends HttpServlet {
         String bucketName = "msaka-sps-spring21.appspot.com";
         Storage storage =
             StorageOptions.newBuilder().setProjectId(projectId).build().getService();
-    BlobId blobId = BlobId.of(bucketName, fileName);
-    BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
+        BlobId blobId = BlobId.of(bucketName, fileName);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
 
-    // Upload the file to Cloud Storage.
-    Blob blob = storage.create(blobInfo, fileInputStream);
+        // Upload the file to Cloud Storage.
+        Blob blob = storage.create(blobInfo, fileInputStream);
 
     // Return the uploaded file's URL.
     return blob.getMediaLink();
