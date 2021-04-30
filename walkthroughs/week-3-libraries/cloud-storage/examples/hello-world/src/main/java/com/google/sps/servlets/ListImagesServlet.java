@@ -15,7 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/list-images")
 public class ListImagesServlet extends HttpServlet {
 
-  @Override
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // List all of the uploaded files.
     String projectId = "msaka-sps-spring21";
